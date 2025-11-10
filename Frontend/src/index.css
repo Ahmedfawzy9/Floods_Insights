@@ -47,7 +47,8 @@
 }
 
 /* Dark Theme Variables */
-.dark {
+.dark,
+[data-theme="dark"] {
   --primary-color: #60a5fa;
   --primary-dark: #3b82f6;
   --primary-light: #93c5fd;
@@ -122,7 +123,8 @@ button {
 
 /* Scrollbar Styles */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -131,7 +133,7 @@ button {
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary-color);
-  border-radius: 5px;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {

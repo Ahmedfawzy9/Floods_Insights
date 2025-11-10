@@ -1,28 +1,162 @@
 .analyze-page {
-  height: 100%;
-  padding: 4rem 2rem;
+  width: 100%;
+  height: calc(100vh - 70px); /* Account for navbar height */
+  overflow: hidden;
   background: var(--section-bg);
 }
 
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
+.dashboard-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 340px 1fr 380px;
+  grid-template-rows: 1fr 350px;
+  grid-template-areas:
+    "left-sidebar map right-sidebar"
+    "left-sidebar charts right-sidebar";
+  gap: 0;
+  overflow: hidden;
 }
 
-.page-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Left Sidebar - Info & Stats */
+.left-sidebar-section {
+  grid-area: left-sidebar;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--section-bg);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  border-right: 1px solid var(--border-color);
 }
 
-.page-description {
-  font-size: 1.25rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
+[data-theme="dark"] .left-sidebar-section {
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Map Section - Center */
+.map-section {
+  grid-area: map;
+  position: relative;
+  overflow: hidden;
+  background: var(--section-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Right Sidebar - Search & Controls */
+.right-sidebar-section {
+  grid-area: right-sidebar;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--section-bg);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  border-left: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .right-sidebar-section {
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Charts Section - Bottom Center */
+.charts-section {
+  grid-area: charts;
+  position: relative;
+  overflow: hidden;
+  background: var(--section-bg);
+  border-top: 1px solid var(--border-color);
+  padding-block: 15px;
+}
+
+/* Responsive Layouts */
+@media (max-width: 1600px) {
+  .dashboard-container {
+    grid-template-columns: 320px 1fr 360px;
+    grid-template-rows: 1fr 330px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .dashboard-container {
+    grid-template-columns: 300px 1fr 340px;
+    grid-template-rows: 1fr 300px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .dashboard-container {
+    grid-template-columns: 1fr 280px;
+    grid-template-rows: 1fr 300px;
+    grid-template-areas:
+      "map right-sidebar"
+      "charts right-sidebar";
+  }
+
+  .left-sidebar-section {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 45vh auto 320px;
+    grid-template-areas:
+      "map"
+      "right-sidebar"
+      "charts";
+  }
+
+  .left-sidebar-section {
+    display: none;
+  }
+
+  .map-section {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .right-sidebar-section {
+    max-height: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  [data-theme="dark"] .right-sidebar-section {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .charts-section {
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-rows: 40vh auto 300px;
+  }
+
+  .charts-section {
+    max-height: 300px;
+  }
+
+  .right-sidebar-section {
+    max-height: 450px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    grid-template-rows: 35vh auto 280px;
+  }
+
+  .charts-section {
+    max-height: 280px;
+  }
+
+  .right-sidebar-section {
+    max-height: 400px;
+  }
 }
