@@ -1,8 +1,8 @@
-import "./Learn.css";
+import "./Community.css";
 
-export default function Learn() {
+export default function Community() {
   return (
-    <div className="learn-page">
+    <div className="community-page">
       <div className="page-container">
         <h1 className="page-title">Learn About Natural Disasters</h1>
         <p className="page-description">

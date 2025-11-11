@@ -155,11 +155,11 @@ export default function Navbar() {
             </li>
             <li>
               <NavLink
-                to="/learn"
+                to="/community"
                 className="nav-link"
                 onClick={closeMobileMenu}
               >
-                Learn
+                Community
               </NavLink>
             </li>
             <li>
