@@ -76,10 +76,12 @@ def predict_flood():
             probability = model.predict_proba(input_array)[0][1]
             
             # Determine risk level
-            if probability > 0.7:
-                risk_level = "High"
-            elif probability > 0.4:
-                risk_level = "Medium" 
+            if probability > 0.8:
+                risk_level = "veryHigh"
+            elif probability > 0.5:
+                risk_level = "high" 
+            elif probability > 0.3:
+                risk_level = "moderate"
             else:
                 risk_level = "Low"
                 
